@@ -1,9 +1,19 @@
-.greetingText {
+.greetingText,
+.guestGreeting {
+  border-radius: 10px;
+  max-width: 300px;
   padding: 20px;
+}
+
+.greetingText {
   background-color: darkgray;
   font-size: 1.25rem;
   font-weight: bold;
   font-style: italic;
   border-radius: 10px;
   max-width: 300px;
+}
+
+.guestGreeting {
+  background-color: bisque;
 }
