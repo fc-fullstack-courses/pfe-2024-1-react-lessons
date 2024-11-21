@@ -1,6 +1,7 @@
 import React from 'react';
 import MyClassComponent from './components/MyClassComponent';
 import MyFunctionalComponent from './components/MyFunctionComponent';
+import Greeting from './components/Greeting';
 
 function App() {
   const classElem1 = React.createElement(MyClassComponent);
@@ -13,6 +14,9 @@ function App() {
   return React.createElement(
     React.Fragment,
     null,
+    React.createElement(Greeting, { userFirstName: 'John', userLastName: "Doe"}),
+    React.createElement(Greeting, { userFirstName: 'Sarah'}),
+    React.createElement(Greeting, ),
     classElem1,
     classElem2,
     funcElem1,
