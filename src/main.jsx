@@ -56,6 +56,29 @@ function MyFunctionalComponent() {
 }
 
 // Щоб намальовати компонент його закидемо у createElement першим аргументом
-const elem = React.createElement(MyFunctionalComponent);
+const classElem1 = React.createElement(MyClassComponent);
+const classElem2 = React.createElement(MyClassComponent);
 
-createRoot(document.getElementById('root')).render(elem);
+const funcElem1 = React.createElement(MyFunctionalComponent);
+const funcElem2 = React.createElement(MyFunctionalComponent);
+
+// const app = React.createElement('div', null, classElem1, classElem2, funcElem1, funcElem2);
+
+// Фрагмент - спеціальний компонент який дозволяє створювати обгорту для елементів 
+// яку реакт потім не буде малювати в верстці. пропси (2 аргумент) завжди мають бути null
+// const frag = React.createElement(React.Fragment, null, classElem1, classElem2, funcElem1, funcElem2 )
+
+function App () {
+  const classElem1 = React.createElement(MyClassComponent);
+  const classElem2 = React.createElement(MyClassComponent);
+
+  const funcElem1 = React.createElement(MyFunctionalComponent);
+  const funcElem2 = React.createElement(MyFunctionalComponent);
+
+  // return React.createElement('div', null, classElem1, classElem2, funcElem1, funcElem2);
+  return React.createElement(React.Fragment, null, classElem1, classElem2, funcElem1, funcElem2);
+}
+
+const app = React.createElement(App);
+
+createRoot(document.getElementById('root')).render(app);
