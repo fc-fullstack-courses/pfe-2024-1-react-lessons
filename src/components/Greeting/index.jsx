@@ -1,4 +1,6 @@
 import React from 'react';
+// імпорт стилів у vite
+import './Greeting.css';
 
 // function Greeting(props) {
 //   // props - об'єкт, який містить зовнішні налаштування для компонента

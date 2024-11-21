@@ -1,0 +1,9 @@
+.greetingText {
+  padding: 20px;
+  background-color: darkgray;
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-style: italic;
+  border-radius: 10px;
+  max-width: 300px;
+}
