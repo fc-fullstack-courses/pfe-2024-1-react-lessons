@@ -32,56 +32,62 @@ class Greeting extends React.Component {
 
     const fullName = `${userFirstName} ${userLastName}`.trim();
 
-    // if (fullName) {
-    //   return React.createElement(
-    //     'p',
-    //     { className: 'greetingText' },
-    //     `Hello, ${fullName}.`
-    //   );
-    // } else {
-    //   return React.createElement(
-    //     'p',
-    //     { className: 'greetingText' },
-    //     `Hello, 'Guest.`
-    //   );
-    // }
+    return fullName ? (
+      <h1 className='greetingText'>Hello {fullName}.</h1>
+    ) : (
+      <p className='guestGreeting'>Hello Guest.</p>
+    );
 
+    // // if (fullName) {
+    // //   return React.createElement(
+    // //     'p',
+    // //     { className: 'greetingText' },
+    // //     `Hello, ${fullName}.`
+    // //   );
+    // // } else {
+    // //   return React.createElement(
+    // //     'p',
+    // //     { className: 'greetingText' },
+    // //     `Hello, 'Guest.`
+    // //   );
+    // // }
+
+    // // if (fullName) {
+    // //   return React.createElement(
+    // //     'h1',
+    // //     { className: 'greetingText' },
+    // //     `Hello, ${fullName}.`
+    // //   );
+    // // } else {
+    // //   return React.createElement(
+    // //     'p',
+    // //     { className: 'guestGreeting' },
+    // //     `Hello, Guest.`
+    // //   );
+    // // }
+
+    // let h1;
     // if (fullName) {
-    //   return React.createElement(
+    //   h1 = React.createElement(
     //     'h1',
     //     { className: 'greetingText' },
     //     `Hello, ${fullName}.`
     //   );
     // } else {
-    //   return React.createElement(
+    //   h1 = React.createElement(
     //     'p',
     //     { className: 'guestGreeting' },
     //     `Hello, Guest.`
     //   );
     // }
 
-    let h1;
-    if (fullName) {
-      h1 = React.createElement(
-        'h1',
-        { className: 'greetingText' },
-        `Hello, ${fullName}.`
-      );
-    } else {
-      h1 = React.createElement(
-        'p',
-        { className: 'guestGreeting' },
-        `Hello, Guest.`
-      );
-    }
+    // return h1;
 
-    return h1;
-
-    // return React.createElement(
-    //   'p',
-    //   { className: 'greetingText' },
-    //   `Hello, ${fullName ? fullName : 'Guest' }.`
-    // );
+    // // return React.createElement(
+    // //   'p',
+    // //   { className: 'greetingText' },
+    // //   `Hello, ${fullName ? fullName : 'Guest' }.`
+    // // );
   }
 }
 
