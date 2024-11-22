@@ -53,6 +53,13 @@ const product1 = {
   description: 'Lorem Ipsum bla bla bla',
 };
 
+const product2 = {
+  id: 1,
+  name: 'Product 2',
+  price: 99.99,
+  description: 'Lorem Ipsum bla bla bla 12324',
+};
+
 function App() {
   const shouldClassComponentsRender = Math.random() > 0.5;
 
@@ -80,6 +87,7 @@ function App() {
       <Greeting userFirstName='Sarah' />
       <Greeting /> */}
       <Product product={product1} />
+      <Product product={product2} />
       {/* {shouldClassComponentsRender ? (
         <MyClassComponent />
       ) : (
