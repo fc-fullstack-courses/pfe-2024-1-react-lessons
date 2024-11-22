@@ -76,11 +76,11 @@ function App() {
 
   return (
     <>
-      <Greeting userFirstName='John' userLastName='Doe' />
+      {/* <Greeting userFirstName='John' userLastName='Doe' />
       <Greeting userFirstName='Sarah' />
-      <Greeting />
+      <Greeting /> */}
       <Product product={product1} />
-      {shouldClassComponentsRender ? (
+      {/* {shouldClassComponentsRender ? (
         <MyClassComponent />
       ) : (
         <MyFunctionalComponent />
@@ -89,7 +89,7 @@ function App() {
         <MyClassComponent />
       ) : (
         <MyFunctionalComponent />
-      )}
+      )} */}
     </>
   );
 }
