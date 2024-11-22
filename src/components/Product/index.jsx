@@ -11,6 +11,10 @@ class Product extends React.Component {
 
   // state = {};
 
+  clickHandler = () => {
+    alert('click!');
+  }
+
   render() {
     const {
       product: { id, name, price, description },
@@ -26,7 +30,7 @@ class Product extends React.Component {
         {/* <p>{name} is {isFavorite ? '': 'not'} favorite</p> */}
         <p>{name} is {!isFavorite && 'not'} favorite</p>
         {/* {isFavorite && <p>{name} is favorite</p>} */}
-        <button>Make Favorite</button>
+        <button id='btn' onClick={this.clickHandler}>Make Favorite</button>
       </article>
     );
   }
