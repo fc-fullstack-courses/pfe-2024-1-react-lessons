@@ -2,7 +2,7 @@ import React from 'react';
 import MyClassComponent from './components/MyClassComponent';
 import MyFunctionalComponent from './components/MyFunctionComponent';
 import Greeting from './components/Greeting';
-import Product from './components/Product';
+import ProductList from './components/ProductList';
 
 // звичайний елемент у реакті
 const elem1 = React.createElement(
@@ -46,19 +46,20 @@ const elem2 = (
 // jsx fragment
 // const frag = <></>;
 
-const product1 = {
-  id: 0,
-  name: 'Product 1',
-  price: 1235.99,
-  description: 'Lorem Ipsum bla bla bla',
-};
-
-const product2 = {
-  id: 1,
-  name: 'Product 2',
-  price: 99.99,
-  description: 'Lorem Ipsum bla bla bla 12324',
-};
+const products = [
+  {
+    id: 0,
+    name: 'Product 1',
+    price: 1235.99,
+    description: 'Lorem Ipsum bla bla bla',
+  },
+  {
+    id: 1,
+    name: 'Product 2',
+    price: 99.99,
+    description: 'Lorem Ipsum bla bla bla 12324',
+  },
+];
 
 function App() {
   const shouldClassComponentsRender = Math.random() > 0.5;
@@ -86,8 +87,7 @@ function App() {
       {/* <Greeting userFirstName='John' userLastName='Doe' />
       <Greeting userFirstName='Sarah' />
       <Greeting /> */}
-      <Product product={product1} />
-      <Product product={product2} />
+      <ProductList products={products}/>
       {/* {shouldClassComponentsRender ? (
         <MyClassComponent />
       ) : (
