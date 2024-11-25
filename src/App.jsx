@@ -2,7 +2,7 @@ import React from 'react';
 import MyClassComponent from './components/MyClassComponent';
 import MyFunctionalComponent from './components/MyFunctionComponent';
 import Greeting from './components/Greeting';
-import ProductList from './components/ProductList';
+import ProductDashboard from './components/ProductDashboard';
 
 // звичайний елемент у реакті
 const elem1 = React.createElement(
@@ -46,71 +46,13 @@ const elem2 = (
 // jsx fragment
 // const frag = <></>;
 
-const products = [
-  {
-    id: 0,
-    name: 'Product 1',
-    price: 1235.99,
-    description: 'Lorem Ipsum bla bla bla',
-  },
-  {
-    id: 1,
-    name: 'Product 2',
-    price: 99.99,
-    description: 'Lorem Ipsum bla bla bla 12324',
-  },
-  {
-    id: 2,
-    name: 'Product 3',
-    price: 999.99,
-    description: '13dsfdef f fg  fewr23rfregfrg',
-  },
-  {
-    id: 3,
-    name: 'Product 4',
-    price: 1232132.99,
-    description: '13dasdsdsadsaregfrg',
-  },
-];
-
 function App() {
-  const shouldClassComponentsRender = Math.random() > 0.5;
-
-  // if (shouldClassComponentsRender) {
-  //   return <>
-  //     <Greeting userFirstName='John' userLastName='Doe' />
-  //     <Greeting userFirstName='Sarah'/>
-  //     <Greeting/>
-  //     <MyClassComponent />
-  //     <MyClassComponent />
-  //   </>;
-  // } else {
-  //   return <>
-  //   <Greeting userFirstName='John' userLastName='Doe' />
-  //   <Greeting userFirstName='Sarah'/>
-  //   <Greeting/>
-  //   <MyFunctionalComponent />
-  //   <MyFunctionalComponent />
-  // </>;
-  // }
+  
 
   return (
     <>
-      {/* <Greeting userFirstName='John' userLastName='Doe' />
-      <Greeting userFirstName='Sarah' />
-       */}
       <Greeting />
-      <ProductList products={products}/>
-      {/* {shouldClassComponentsRender ? (
-        <MyClassComponent />
-      ) : (
-        <MyFunctionalComponent />
-      )}
-      {shouldClassComponentsRender ? (
-        <MyClassComponent />
-      ) : (
-        <MyFunctionalComponent />
-      )} */}
+      <ProductDashboard />
     </>
   );
 }
