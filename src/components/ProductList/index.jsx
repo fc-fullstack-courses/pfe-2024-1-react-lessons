@@ -17,6 +17,7 @@ class ProductList extends React.Component {
     const { isReverseOrder } = this.state;
 
     const productsComponents = products.map((product) => {
+      // Взаємодія Батько - Дитина (пропси)
       return <Product key={product.id} product={product} />;
     });
 

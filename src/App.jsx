@@ -98,7 +98,8 @@ function App() {
     <>
       {/* <Greeting userFirstName='John' userLastName='Doe' />
       <Greeting userFirstName='Sarah' />
-      <Greeting /> */}
+       */}
+      <Greeting />
       <ProductList products={products}/>
       {/* {shouldClassComponentsRender ? (
         <MyClassComponent />
