@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MyClassComponent from './components/MyClassComponent';
 import MyFunctionalComponent from './components/MyFunctionComponent';
 import Greeting from './components/Greeting';
@@ -48,11 +48,12 @@ const elem2 = (
 // const frag = <></>;
 
 function App() {
-  
+  const [isClockRendered, setIsClockRendered] = useState(true);
 
   return (
     <>
-      <Clock />
+      <button onClick={() => setIsClockRendered(!isClockRendered)}>Toggle Clock</button>
+      {isClockRendered && <Clock />}
       <Greeting />
       <ProductDashboard />
     </>
