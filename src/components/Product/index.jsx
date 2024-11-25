@@ -7,6 +7,8 @@ class Product extends React.Component {
     this.state = {
       isFavorite: false,
     };
+
+    // this.clickHandler = this.clickHandler.bind(this);
   }
 
   // state = {};
