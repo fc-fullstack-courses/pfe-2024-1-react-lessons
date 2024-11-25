@@ -3,6 +3,7 @@ import MyClassComponent from './components/MyClassComponent';
 import MyFunctionalComponent from './components/MyFunctionComponent';
 import Greeting from './components/Greeting';
 import ProductDashboard from './components/ProductDashboard';
+import Clock from './components/Clock';
 
 // звичайний елемент у реакті
 const elem1 = React.createElement(
@@ -51,6 +52,7 @@ function App() {
 
   return (
     <>
+      <Clock />
       <Greeting />
       <ProductDashboard />
     </>
