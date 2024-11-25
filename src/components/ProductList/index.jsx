@@ -18,7 +18,7 @@ class ProductList extends React.Component {
 
     const productsComponents = products.map((product) => {
       // Взаємодія Батько - Дитина (пропси)
-      return <Product key={product.id} product={product} />;
+      return <Product key={product.id} product={product} handleSwitchOrder={this.handleSwitchOrder} />;
     });
 
     return (
