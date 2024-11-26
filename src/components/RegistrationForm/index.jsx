@@ -13,6 +13,7 @@ class RegistrationForm extends React.Component {
     country: 'UA',
     comment: '',
     isSubscribed: false,
+    gender: 'male',
   };
 
   handleSubmit = (e) => {
@@ -79,7 +80,9 @@ class RegistrationForm extends React.Component {
       password,
       nickname,
       country,
+      comment,
       isSubscribed,
+      gender,
     } = this.state;
 
     return (
@@ -105,12 +108,13 @@ class RegistrationForm extends React.Component {
           value={nickname}
           onChange={this.handleChange}
         />
-        <select name="country" value={country} onChange={this.handleChange} >
-          <option value="UA">Ukraine</option>
-          <option value="UK">United Kingdom</option>
-          <option value="SWE">Sweden</option>
-          <option value="JP">Japan</option>
+        <select name='country' value={country} onChange={this.handleChange}>
+          <option value='UA'>Ukraine</option>
+          <option value='UK'>United Kingdom</option>
+          <option value='SWE'>Sweden</option>
+          <option value='JP'>Japan</option>
         </select>
+        <textarea name='comment' value={comment} onChange={this.handleChange} />
         <label>
           <input
             type='checkbox'
@@ -120,6 +124,29 @@ class RegistrationForm extends React.Component {
           />
           <span>Я згоден підписатися на ваш спам</span>
         </label>
+        <fieldset>
+          <legend>Your gender</legend>
+          <label>
+            <input
+              type='radio'
+              name='gender'
+              onChange={this.handleChange}
+              checked={gender === 'male'}
+              value='male'
+            />{' '}
+            Male
+          </label>
+          <label>
+            <input
+              type='radio'
+              name='gender'
+              onChange={this.handleChange}
+              checked={gender === 'female'}
+              value='female'
+            />{' '}
+            Female
+          </label>
+        </fieldset>
         <button>Register</button>
       </form>
     );
