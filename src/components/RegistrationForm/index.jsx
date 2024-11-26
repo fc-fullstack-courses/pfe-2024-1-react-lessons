@@ -1,4 +1,7 @@
 import React from 'react';
+// styles - об'єкт ключі якого назви ваших селекторів у css
+// a значення - згенеровані назви для стилів
+import styles from './RegistrationForm.module.css';
 
 function registerUser(userData) {
   console.log(userData);
@@ -18,7 +21,7 @@ const initialState = {
 class RegistrationForm extends React.Component {
   state = { ...initialState };
 
-  handleSubmit = (e) => {
+  handleSubmit = (e) => {// 
     const { email, password, nickname } = this.state;
 
     e.preventDefault();
@@ -89,8 +92,9 @@ class RegistrationForm extends React.Component {
       gender,
     } = this.state;
 
+    // щоб використати стилі з модулю css у className закидуєти відповідну властивість
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className={styles.container}>
         <input
           type='email'
           name='email'

@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Product.module.css';
 
 class Product extends React.Component {
   constructor(props) {
@@ -44,14 +45,14 @@ class Product extends React.Component {
     } = this.props;
 
     return (
-      <article id={`product-${id}`}>
+      <article id={`product-${id}`} className={styles.container}>
         <h2>{name}</h2>
         <p>Price: {price}</p>
         <p>{description}</p>
         {/* <p>{name} is {isFavorite ? '': 'not'} favorite</p> */}
         <p>{name} is {!isFavorite && 'not'} favorite</p>
         {/* {isFavorite && <p>{name} is favorite</p>} */}
-        <button id='btn' onClick={() => toggleFavoriteProduct(id)}>Make Favorite</button>
+        {/* <button id='btn' onClick={() => toggleFavoriteProduct(id)}>Make Favorite</button> */}
         <button onClick={this.clickHandler}>Make Favorite</button>
         {/* Взаємодія Дитина -> Батько (коллбек, який змінює стан батька) */}
         <button onClick={handleSwitchOrder}>Change Parent order</button>
