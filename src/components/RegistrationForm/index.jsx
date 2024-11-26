@@ -12,6 +12,7 @@ class RegistrationForm extends React.Component {
     nickname: '',
     country: 'UA',
     comment: '',
+    isSubscribed: false,
   };
 
   handleSubmit = (e) => {
@@ -64,14 +65,22 @@ class RegistrationForm extends React.Component {
     });
   };
 
-  handleChange = ({ target: { value, name } }) => {
+  handleChange = ({ target: { value, name, type, checked } }) => {
+    const newValue = type === 'checkbox' ? checked : value;
+
     this.setState({
-      [name]: value,
+      [name]: newValue,
     });
   };
 
   render() {
-    const { email, password, nickname, country, comment } = this.state;
+    const {
+      email,
+      password,
+      nickname,
+      country,
+      isSubscribed,
+    } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -102,7 +111,15 @@ class RegistrationForm extends React.Component {
           <option value="SWE">Sweden</option>
           <option value="JP">Japan</option>
         </select>
-        <textarea name="comment" value={comment} onChange={this.handleChange}/>
+        <label>
+          <input
+            type='checkbox'
+            name='isSubscribed'
+            checked={isSubscribed}
+            onChange={this.handleChange}
+          />
+          <span>Я згоден підписатися на ваш спам</span>
+        </label>
         <button>Register</button>
       </form>
     );
