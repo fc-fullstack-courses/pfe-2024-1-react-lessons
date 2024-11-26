@@ -10,6 +10,8 @@ class RegistrationForm extends React.Component {
     email: '',
     password: '',
     nickname: '',
+    country: 'UA',
+    comment: '',
   };
 
   handleSubmit = (e) => {
@@ -43,6 +45,8 @@ class RegistrationForm extends React.Component {
   handleEmailChange = (e) => {
     console.log(e.target.value);
 
+    console.log(e.target.name);
+
     this.setState({
       email: e.target.value,
     });
@@ -60,8 +64,14 @@ class RegistrationForm extends React.Component {
     });
   };
 
+  handleChange = ({ target: { value, name } }) => {
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
-    const { email, password, nickname } = this.state;
+    const { email, password, nickname, country, comment } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -70,22 +80,29 @@ class RegistrationForm extends React.Component {
           name='email'
           placeholder='Enter email'
           value={email}
-          onChange={this.handleEmailChange}
+          onChange={this.handleChange}
         />
         <input
           type='password'
           name='password'
           placeholder='Enter password'
           value={password}
-          onChange={this.handlePasswordChange}
+          onChange={this.handleChange}
         />
         <input
           type='text'
           name='nickname'
           placeholder='Enter nickname'
           value={nickname}
-          onChange={this.handleNicknameChange}
+          onChange={this.handleChange}
         />
+        <select name="country" value={country} onChange={this.handleChange} >
+          <option value="UA">Ukraine</option>
+          <option value="UK">United Kingdom</option>
+          <option value="SWE">Sweden</option>
+          <option value="JP">Japan</option>
+        </select>
+        <textarea name="comment" value={comment} onChange={this.handleChange}/>
         <button>Register</button>
       </form>
     );
