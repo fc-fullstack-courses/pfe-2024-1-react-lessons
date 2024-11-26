@@ -5,16 +5,18 @@ function registerUser(userData) {
   alert('user regisetered!');
 }
 
+const initialState = {
+  email: '',
+  password: '',
+  nickname: '',
+  country: 'UA',
+  comment: '',
+  isSubscribed: false,
+  gender: 'male',
+};
+
 class RegistrationForm extends React.Component {
-  state = {
-    email: '',
-    password: '',
-    nickname: '',
-    country: 'UA',
-    comment: '',
-    isSubscribed: false,
-    gender: 'male',
-  };
+  state = { ...initialState };
 
   handleSubmit = (e) => {
     const { email, password, nickname } = this.state;
@@ -41,7 +43,9 @@ class RegistrationForm extends React.Component {
     registerUser(newUserData);
 
     // скинути форму
-    e.target.reset();
+    // e.target.reset();
+
+    this.setState({ ...initialState });
   };
 
   handleEmailChange = (e) => {
