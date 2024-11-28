@@ -3,6 +3,8 @@ import Greeting from './components/Greeting';
 import ProductDashboard from './components/ProductDashboard';
 import Clock from './components/Clock';
 import RegistrationForm from './components/RegistrationForm';
+import Header from './components/Header';
+import UserProfile from './components/UserProfile';
 
 // звичайний елемент у реакті
 const elem1 = React.createElement(
@@ -47,15 +49,11 @@ const elem2 = (
 // const frag = <></>;
 
 function App() {
-  const [isClockRendered, setIsClockRendered] = useState(false);
 
   return (
     <>
-      <button onClick={() => setIsClockRendered(!isClockRendered)}>Toggle Clock</button>
-      {isClockRendered && <Clock />}
-      <RegistrationForm />
-      <Greeting />
-      <ProductDashboard />
+      <Header />
+      <UserProfile />
     </>
   );
 }
