@@ -8,6 +8,7 @@ import UserProfile from './components/UserProfile';
 import List from './components/List';
 import Avatar from './components/Avatar';
 import GuestAvatar from './components/GuestAvatar';
+import ComponentA from './components/drillingComponents/A';
 
 // звичайний елемент у реакті
 const elem1 = React.createElement(
@@ -93,6 +94,7 @@ class App extends React.Component {
           handleLogin={this.handleLogin}
         />
         <UserProfile user={user} />
+        <ComponentA />
         <List listTitle='Покупки в магазині' listType='ordered'>
           <li>Пиріг</li>
           <li>Морозиво</li>
