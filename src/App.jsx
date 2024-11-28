@@ -5,6 +5,7 @@ import Clock from './components/Clock';
 import RegistrationForm from './components/RegistrationForm';
 import Header from './components/Header';
 import UserProfile from './components/UserProfile';
+import List from './components/List';
 
 // звичайний елемент у реакті
 const elem1 = React.createElement(
@@ -90,6 +91,18 @@ class App extends React.Component {
           handleLogin={this.handleLogin}
         />
         <UserProfile user={user} />
+        <List listTitle="Покупки в магазині" listType="ordered">
+          <li>Пиріг</li>
+          <li>Морозиво</li>
+          <li>Цукерки</li>
+        </List>
+        <List listTitle="Чорна П'ятниця 2024" listType="unordered">
+          <li>Телефон</li>
+          <li>Ноутбук</li>
+          <li><b>Повербанк</b></li>
+          <li>Ще одни повербанк</li>
+          {/* <Header /> */}
+        </List>
       </>
     );
   }
