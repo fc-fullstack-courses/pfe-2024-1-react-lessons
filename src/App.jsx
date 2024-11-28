@@ -48,14 +48,51 @@ const elem2 = (
 // jsx fragment
 // const frag = <></>;
 
-function App() {
+class App extends React.Component {
+  state = {
+    user: {
+      id: 0,
+      firstName: 'Petro',
+      lastName: 'Userenko',
+      isMale: true,
+      email: 'testuser@gmail.com',
+      age: 12,
+    },
+  };
 
-  return (
-    <>
-      <Header />
-      <UserProfile />
-    </>
-  );
+  handleLogout = () => {
+    this.setState({
+      user: null,
+    });
+  };
+
+  handleLogin = () => {
+    this.setState({
+      user: {
+        id: 0,
+        firstName: 'User',
+        lastName: 'Userenko',
+        isMale: true,
+        email: 'testuser@gmail.com',
+        age: 12,
+      },
+    });
+  };
+
+  render() {
+    const { user } = this.state;
+
+    return (
+      <>
+        <Header
+          user={user}
+          handleLogout={this.handleLogout}
+          handleLogin={this.handleLogin}
+        />
+        <UserProfile user={user} />
+      </>
+    );
+  }
 }
 
 export default App;
