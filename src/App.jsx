@@ -6,6 +6,8 @@ import RegistrationForm from './components/RegistrationForm';
 import Header from './components/Header';
 import UserProfile from './components/UserProfile';
 import List from './components/List';
+import Avatar from './components/Avatar';
+import GuestAvatar from './components/GuestAvatar';
 
 // звичайний елемент у реакті
 const elem1 = React.createElement(
@@ -91,17 +93,46 @@ class App extends React.Component {
           handleLogin={this.handleLogin}
         />
         <UserProfile user={user} />
-        <List listTitle="Покупки в магазині" listType="ordered">
+        <List listTitle='Покупки в магазині' listType='ordered'>
           <li>Пиріг</li>
           <li>Морозиво</li>
           <li>Цукерки</li>
         </List>
-        <List listTitle="Чорна П'ятниця 2024" listType="unordered">
+        <List listTitle="Чорна П'ятниця 2024" listType='unordered'>
           <li>Телефон</li>
           <li>Ноутбук</li>
-          <li><b>Повербанк</b></li>
+          <li>
+            <b>Повербанк</b>
+          </li>
           <li>Ще одни повербанк</li>
           {/* <Header /> */}
+        </List>
+        <List listTitle='Користувачі'>
+          <li>
+            <h2>Користувач 1</h2>
+            <Avatar
+              src='https://cdn.prod.website-files.com/66d6b5efabcac22913f8211b/66d6b5efabcac22913f821e0_66b54373eeb8312cd8436f79_e2a9f6cb84af52d8a3e3e08a810be27962a9528a-922x922.jpeg'
+              alt='Користувач 1'
+            />
+          </li>
+          <li>
+            <h2>Користувач 2</h2>
+            <Avatar
+              src='https://cdn.prod.website-files.com/62c2c8cc934c9cd269b5ec15/630606ff81b267f621ec9ca1_OPENKNOWLEDGEGmbH_Portraitfoto_Ina_Einemann.jpg'
+              alt='Користувач 2'
+            />
+          </li>
+          <li>
+            <h2>Гість</h2>
+            <Avatar
+              src='https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png'
+              alt='Гість'
+            />
+          </li>
+          <li>
+            <h2>Гість</h2>
+            <GuestAvatar />
+          </li>
         </List>
       </>
     );

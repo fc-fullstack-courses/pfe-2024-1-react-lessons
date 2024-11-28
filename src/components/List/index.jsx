@@ -1,7 +1,7 @@
 import React from 'react';
 
 const List = (props) => {
-  const { listTitle, listType, children } = props;
+  const { listTitle, listType = 'ordered', children } = props;
 
   console.log(props);
 
