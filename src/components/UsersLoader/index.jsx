@@ -9,64 +9,12 @@ class UsersLoader extends Component {
   };
 
   componentDidMount() {
-    const { currentPage } = this.state;
-
-    this.setState({
-      isLoading: true,
-    });
-
-    fetch(
-      `https://randomuser.me/api/?seed=12345&results=10&nat=ua&page=${currentPage}`
-    )
-      .then((res) => res.json())
-      .then(({ results: users }) => {
-        // console.log(users);
-
-        this.setState({
-          users,
-        });
-      })
-      .catch((error) => {
-        this.setState({
-          error,
-        });
-      })
-      .finally(() => {
-        this.setState({
-          isLoading: false,
-        });
-      });
+    this.load();
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.currentPage !== this.state.currentPage) {
-      const { currentPage } = this.state;
-
-      this.setState({
-        isLoading: true,
-      });
-
-      fetch(
-        `https://randomuser.me/api/?seed=12345&results=10&nat=ua&page=${currentPage}`
-      )
-        .then((res) => res.json())
-        .then(({ results: users }) => {
-          // console.log(users);
-
-          this.setState({
-            users,
-          });
-        })
-        .catch((error) => {
-          this.setState({
-            error,
-          });
-        })
-        .finally(() => {
-          this.setState({
-            isLoading: false,
-          });
-        });
+      this.load();
     }
   }
 
@@ -85,6 +33,35 @@ class UsersLoader extends Component {
       currentPage: currentPage + 1,
     });
   };
+
+  load = () => {
+    const { currentPage } = this.state;
+
+    this.setState({
+      isLoading: true,
+    });
+
+    fetch(
+      `https://randomuser.me/api/?seed=12345&results=10&nat=ua&page=${currentPage}`
+    )
+      .then((res) => res.json())
+      .then(({ results: users }) => {
+
+        this.setState({
+          users,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          error,
+        });
+      })
+      .finally(() => {
+        this.setState({
+          isLoading: false,
+        });
+      });
+  }
 
   render() {
     const { users, isLoading, error, currentPage } = this.state;
