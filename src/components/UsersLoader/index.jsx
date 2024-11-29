@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getUsers } from '../../api';
 
 class UsersLoader extends Component {
   state = {
@@ -41,10 +42,11 @@ class UsersLoader extends Component {
       isLoading: true,
     });
 
-    fetch(
-      `https://randomuser.me/api/?seed=12345&results=10&nat=ua&page=${currentPage}`
-    )
-      .then((res) => res.json())
+    // fetch(
+    //   `https://randomuser.me/api/?seed=12345&results=10&nat=ua&page=${currentPage}`
+    // )
+    //   .then((res) => res.json())
+    getUsers(currentPage)
       .then(({ results: users }) => {
 
         this.setState({
