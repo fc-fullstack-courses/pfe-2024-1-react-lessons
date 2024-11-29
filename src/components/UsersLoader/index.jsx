@@ -19,7 +19,7 @@ class UsersLoader extends Component {
     }
     
     const usersCards = users.map(user => {
-      return <div>
+      return <div key={user.id}>
         <pre>{JSON.stringify(user, null, 4)}</pre>
       </div>
     });
