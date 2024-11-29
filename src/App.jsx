@@ -9,6 +9,7 @@ import List from './components/List';
 import Avatar from './components/Avatar';
 import GuestAvatar from './components/GuestAvatar';
 import ComponentA from './components/drillingComponents/A';
+import UsersLoader from './components/UsersLoader';
 
 // звичайний елемент у реакті
 const elem1 = React.createElement(
@@ -88,7 +89,8 @@ class App extends React.Component {
 
     return (
       <>
-        <Header
+        <UsersLoader />
+        {/* <Header
           user={user}
           handleLogout={this.handleLogout}
           handleLogin={this.handleLogin}
@@ -107,7 +109,7 @@ class App extends React.Component {
             <b>Повербанк</b>
           </li>
           <li>Ще одни повербанк</li>
-          {/* <Header /> */}
+          {/* <Header /> 
         </List>
         <List listTitle='Користувачі'>
           <li>
@@ -135,7 +137,7 @@ class App extends React.Component {
             <h2>Гість</h2>
             <GuestAvatar />
           </li>
-        </List>
+        </List> */}
       </>
     );
   }
