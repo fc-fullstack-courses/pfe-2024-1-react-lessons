@@ -12,10 +12,10 @@ class UsersLoader extends Component {
       isLoading: true,
     });
 
-    fetch('https://jsonplaceholder.typicode.com/users')
+    fetch('https://randomuser.me/api/?seed=12345&results=10&nat=ua')
       .then((res) => res.json())
-      .then((users) => {
-        console.log(users);
+      .then(({ results: users }) => {
+        // console.log(users);
 
         this.setState({
           users,
@@ -25,7 +25,8 @@ class UsersLoader extends Component {
         this.setState({
           error,
         });
-      }).finally(() => {
+      })
+      .finally(() => {
         this.setState({
           isLoading: false,
         });
@@ -45,7 +46,7 @@ class UsersLoader extends Component {
 
     const usersCards = users.map((user) => {
       return (
-        <div key={user.id}>
+        <div key={user.login.uuid}>
           <pre>{JSON.stringify(user, null, 4)}</pre>
         </div>
       );
