@@ -7,6 +7,7 @@ class UsersLoader extends Component {
     error: null,
     isLoading: false,
     currentPage: 1,
+    results: 2,
   };
 
   componentDidMount() {
@@ -36,7 +37,7 @@ class UsersLoader extends Component {
   };
 
   load = () => {
-    const { currentPage } = this.state;
+    const { currentPage, results } = this.state;
 
     this.setState({
       isLoading: true,
@@ -46,9 +47,8 @@ class UsersLoader extends Component {
     //   `https://randomuser.me/api/?seed=12345&results=10&nat=ua&page=${currentPage}`
     // )
     //   .then((res) => res.json())
-    getUsers(currentPage)
-      .then(({ results: users }) => {
-
+    getUsers({ results, currentPage })
+      .then((users) => {
         this.setState({
           users,
         });
@@ -63,7 +63,7 @@ class UsersLoader extends Component {
           isLoading: false,
         });
       });
-  }
+  };
 
   render() {
     const { users, isLoading, error, currentPage } = this.state;
