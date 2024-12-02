@@ -10,6 +10,7 @@ import Avatar from './components/Avatar';
 import GuestAvatar from './components/GuestAvatar';
 import ComponentA from './components/drillingComponents/A';
 import UsersLoader from './components/UsersLoader';
+import MessagesLoader from './components/MessagesLoader';
 
 // звичайний елемент у реакті
 const elem1 = React.createElement(
@@ -89,7 +90,8 @@ class App extends React.Component {
 
     return (
       <>
-        <UsersLoader />
+        <MessagesLoader />
+        {/* <UsersLoader /> */}
         {/* <Header
           user={user}
           handleLogout={this.handleLogout}
