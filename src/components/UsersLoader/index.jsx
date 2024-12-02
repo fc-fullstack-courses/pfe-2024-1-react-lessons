@@ -47,7 +47,7 @@ class UsersLoader extends Component {
     //   `https://randomuser.me/api/?seed=12345&results=10&nat=ua&page=${currentPage}`
     // )
     //   .then((res) => res.json())
-    getUsers({ results, currentPage })
+    getUsers({ results, page: currentPage, })
       .then((users) => {
         this.setState({
           users,
