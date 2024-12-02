@@ -11,6 +11,7 @@ import GuestAvatar from './components/GuestAvatar';
 import ComponentA from './components/drillingComponents/A';
 import UsersLoader from './components/UsersLoader';
 import MessagesLoader from './components/MessagesLoader';
+import DataLoader from './components/DataLoader';
 
 // звичайний елемент у реакті
 const elem1 = React.createElement(
@@ -88,9 +89,45 @@ class App extends React.Component {
   render() {
     const { user } = this.state;
 
+    const getMessages = function () {
+      const messagesPromise = fetch('/messages.json').then((res) => res.json());
+
+      return messagesPromise;
+    };
+
+    const getVideos = function () {
+      return fetch('/videos.json').then((res) => res.json());
+    };
+
+    const renderMessages = (state, load) => {
+      console.log(state);
+
+      const { data: messages, isLoading, error } = state;
+
+      return (
+        <div>
+          <button onClick={() => load()}>Load again</button>
+          {isLoading && <div>LOADING ...</div>}
+          {error && <div>ERROR: {error.message}</div>}
+          {messages &&
+            messages.map((message) => (
+              <article key={message.id}>
+                <h2>{message.title}</h2>
+                <h3>By {message.author}</h3>
+                <p>{message.text}</p>
+              </article>
+            ))}
+        </div>
+      );
+    };
+
     return (
       <>
-        <MessagesLoader />
+        <DataLoader loadData={getMessages} render={renderMessages} />
+        <DataLoader
+          loadData={getVideos}
+          render={(state) => <div>{JSON.stringify(state)}</div>}
+        />
         {/* <UsersLoader /> */}
         {/* <Header
           user={user}
