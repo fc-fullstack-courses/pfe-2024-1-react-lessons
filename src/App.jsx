@@ -123,11 +123,15 @@ class App extends React.Component {
 
     return (
       <>
-        <DataLoader loadData={getMessages} render={renderMessages} />
+        <DataLoader loadData={getMessages} children={renderMessages} />
+        <DataLoader loadData={getMessages}>{renderMessages}</DataLoader>
         <DataLoader
           loadData={getVideos}
-          render={(state) => <div>{JSON.stringify(state)}</div>}
+          children={(state) => <div>{JSON.stringify(state)}</div>}
         />
+        <DataLoader loadData={getVideos}>
+          {(state) => <div>{JSON.stringify(state)}</div>}
+        </DataLoader>
         {/* <UsersLoader /> */}
         {/* <Header
           user={user}
