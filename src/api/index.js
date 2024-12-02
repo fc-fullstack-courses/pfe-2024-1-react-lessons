@@ -1,4 +1,5 @@
 import queryString from 'query-string';
+import CONSTANTS from '../configs';
 
 /**
  * @param {object} options
@@ -9,11 +10,11 @@ import queryString from 'query-string';
  */
 export function getUsers(options) {
   const defaultOptions = {
-    seed: '12345',
-    results: 10,
-    page: 1,
-    nat: ['ua'],
-    exc: ['id'],
+    seed: CONSTANTS.SEED,
+    results: CONSTANTS.RESULTS,
+    page: CONSTANTS.STARTING_PAGE,
+    nat: CONSTANTS.NATIONALITY,
+    exc: CONSTANTS.EXCLUDE_FIELDS,
   };
 
   const finalizedOptions = {
@@ -25,7 +26,7 @@ export function getUsers(options) {
     arrayFormat: 'comma',
   });
 
-  const usersPromise = fetch(`https://randomuser.me/api/?${queryStr}`)
+  const usersPromise = fetch(`${CONSTANTS.USER_SERVER}/?${queryStr}`)
     .then((res) => res.json())
     .then((responseWithUsers) => responseWithUsers.results);
 
