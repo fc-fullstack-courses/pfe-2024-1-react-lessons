@@ -11,5 +11,14 @@ import React, { createContext } from 'react';
 export const OurContext = React.createContext();
 
 export const ThemeContext = createContext();
+/*
+  У компоненті App у стані зберегти рядок з назвою теми
+  Створіть контекст теми та зробіть так щоб до нього мали доступ усі компоненти додатку
+  в цей контекст покладіть рядок з темою зі стейту App
+
+  Отримайте доступ до контексту теми у двох компонентах, які відмалюовуює App
+  (наприклад Header, Sidebar, Profile....)
+  Тему через звичайні пропси не передавати
+*/
 
 export const UserContext = createContext();
