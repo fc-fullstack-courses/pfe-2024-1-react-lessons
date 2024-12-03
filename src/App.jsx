@@ -2,6 +2,7 @@ import React from 'react';
 import DataLoader from './components/DataLoader';
 import * as API from './api';
 import ComponentA from './components/drillingComponents/A';
+import { UserContext } from './contexts';
 
 class App extends React.Component {
   state = {
@@ -60,7 +61,7 @@ class App extends React.Component {
     };
 
     return (
-      <>
+      <UserContext.Provider value={user}>
         <ComponentA />
         <DataLoader loadData={API.getMessages} children={renderMessages} />
         <DataLoader loadData={API.getMessages}>{renderMessages}</DataLoader>
@@ -71,7 +72,7 @@ class App extends React.Component {
         <DataLoader loadData={API.getVideos}>
           {(state) => <div>{JSON.stringify(state)}</div>}
         </DataLoader>
-      </>
+      </UserContext.Provider>
     );
   }
 }
