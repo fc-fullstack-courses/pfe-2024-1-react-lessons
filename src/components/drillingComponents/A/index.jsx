@@ -1,17 +1,6 @@
 import React, { Component } from 'react';
+import { OurContext } from '../../../contexts';
 import ComponentB from '../B';
-
-/*
-  Робота з контекстом:
-  1. Створити контекст
-  2. Покласти дані в контекст
-  3. отримати дані там де вони потрібні
-*/
-
-// 1. Створити контекст
-const OurContext = React.createContext();
-
-console.log(OurContext);
 
 class ComponentA extends Component {
   state = {
@@ -39,5 +28,3 @@ class ComponentA extends Component {
 }
 
 export default ComponentA;
-
-export { OurContext };

@@ -1,5 +1,6 @@
 import React from 'react';
-import { OurContext } from '../A';
+import { OurContext } from '../../../contexts';
+
 
 const ComponentD = (props) => {
   const { name } = props;
