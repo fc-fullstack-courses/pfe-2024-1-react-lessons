@@ -1,6 +1,7 @@
 import React from 'react';
 import DataLoader from './components/DataLoader';
 import * as API from './api';
+import ComponentA from './components/drillingComponents/A';
 
 class App extends React.Component {
   state = {
@@ -60,6 +61,7 @@ class App extends React.Component {
 
     return (
       <>
+        <ComponentA />
         <DataLoader loadData={API.getMessages} children={renderMessages} />
         <DataLoader loadData={API.getMessages}>{renderMessages}</DataLoader>
         <DataLoader
