@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ThemeContext } from '../../contexts';
+import styles from './Header.module.css';
 
 class Header extends Component {
   render() {
@@ -14,13 +15,26 @@ class Header extends Component {
 
     return (
       <ThemeContext.Consumer>
-        {(theme) => {
+        {([theme, switchTheme]) => {
 
-          return <header>
+          let currentThemeClass;
+
+          if(theme === 'dark') {
+            currentThemeClass = styles.darkTheme;
+          } else if (theme === 'light') {
+            currentThemeClass = styles.lightTheme;
+          }
+
+          const className = `${styles.container} ${currentThemeClass}`;
+
+          return <header className={className}>
             <h1>Мій сайт</h1>
             <p>Привіт {fullName}</p>
             {user ? logoutBtn : loginBtn}
-            <button>Змінити тему на {theme === 'dark' ? 'світлу' : 'темну'}</button>
+            <button onClick={() => {
+              const newTheme = theme === 'dark' ? 'light' : 'dark';
+              switchTheme(newTheme);
+            }}>Змінити тему на {theme === 'dark' ? 'світлу' : 'темну'}</button>
           </header>;
         }}
       </ThemeContext.Consumer>

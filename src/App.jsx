@@ -15,7 +15,7 @@ class App extends React.Component {
       email: 'testuser@gmail.com',
       age: 12,
     },
-    theme: 'dark',
+    theme: 'light',
   };
 
   handleLogout = () => {
@@ -34,6 +34,12 @@ class App extends React.Component {
         email: 'testuser@gmail.com',
         age: 12,
       },
+    });
+  };
+
+  switchTheme = (newTheme) => {
+    this.setState({
+      theme: newTheme,
     });
   };
 
@@ -64,7 +70,7 @@ class App extends React.Component {
 
     return (
       <UserContext.Provider value={user}>
-        <ThemeContext.Provider value={theme}>
+        <ThemeContext.Provider value={[theme, this.switchTheme]}>
           <Header />
           <ComponentA />
           <DataLoader loadData={API.getMessages} children={renderMessages} />

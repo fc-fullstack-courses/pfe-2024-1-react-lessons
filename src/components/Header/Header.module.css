@@ -1,0 +1,14 @@
+.container {
+  padding: 20px;
+  border-bottom: 2px solid black;
+}
+
+.lightTheme {
+  background-color: lightblue;
+  color: black;
+}
+
+.darkTheme {
+  color: white;
+  background-color: #333333;
+}
