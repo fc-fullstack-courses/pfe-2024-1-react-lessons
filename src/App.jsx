@@ -12,6 +12,7 @@ import ComponentA from './components/drillingComponents/A';
 import UsersLoader from './components/UsersLoader';
 import MessagesLoader from './components/MessagesLoader';
 import DataLoader from './components/DataLoader';
+import * as API from './api';
 
 // звичайний елемент у реакті
 const elem1 = React.createElement(
@@ -89,16 +90,6 @@ class App extends React.Component {
   render() {
     const { user } = this.state;
 
-    const getMessages = function () {
-      const messagesPromise = fetch('/messages.json').then((res) => res.json());
-
-      return messagesPromise;
-    };
-
-    const getVideos = function () {
-      return fetch('/videos.json').then((res) => res.json());
-    };
-
     const renderMessages = (state, load) => {
       console.log(state);
 
@@ -123,13 +114,13 @@ class App extends React.Component {
 
     return (
       <>
-        <DataLoader loadData={getMessages} children={renderMessages} />
-        <DataLoader loadData={getMessages}>{renderMessages}</DataLoader>
+        <DataLoader loadData={API.getMessages} children={renderMessages} />
+        <DataLoader loadData={API.getMessages}>{renderMessages}</DataLoader>
         <DataLoader
-          loadData={getVideos}
+          loadData={API.getVideos}
           children={(state) => <div>{JSON.stringify(state)}</div>}
         />
-        <DataLoader loadData={getVideos}>
+        <DataLoader loadData={API.getVideos}>
           {(state) => <div>{JSON.stringify(state)}</div>}
         </DataLoader>
         {/* <UsersLoader /> */}

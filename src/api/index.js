@@ -33,6 +33,16 @@ export function getUsers(options) {
   return usersPromise;
 }
 
+export const getMessages = function () {
+  const messagesPromise = fetch('/messages.json').then((res) => res.json());
+
+  return messagesPromise;
+};
+
+export const getVideos = function () {
+  return fetch('/videos.json').then((res) => res.json());
+};
+
 // /**
 //  *
 //  * @param {object} queryObj
