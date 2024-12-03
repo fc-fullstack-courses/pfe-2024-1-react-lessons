@@ -2,7 +2,8 @@ import React from 'react';
 import DataLoader from './components/DataLoader';
 import * as API from './api';
 import ComponentA from './components/drillingComponents/A';
-import { UserContext } from './contexts';
+import { UserContext, ThemeContext } from './contexts';
+import Header from './components/Header';
 
 class App extends React.Component {
   state = {
@@ -14,6 +15,7 @@ class App extends React.Component {
       email: 'testuser@gmail.com',
       age: 12,
     },
+    theme: 'dark',
   };
 
   handleLogout = () => {
@@ -36,7 +38,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { user } = this.state;
+    const { user, theme } = this.state;
 
     const renderMessages = (state, load) => {
       console.log(state);
@@ -62,16 +64,19 @@ class App extends React.Component {
 
     return (
       <UserContext.Provider value={user}>
-        <ComponentA />
-        <DataLoader loadData={API.getMessages} children={renderMessages} />
-        <DataLoader loadData={API.getMessages}>{renderMessages}</DataLoader>
-        <DataLoader
-          loadData={API.getVideos}
-          children={(state) => <div>{JSON.stringify(state)}</div>}
-        />
-        <DataLoader loadData={API.getVideos}>
-          {(state) => <div>{JSON.stringify(state)}</div>}
-        </DataLoader>
+        <ThemeContext.Provider value={theme}>
+          <Header />
+          <ComponentA />
+          <DataLoader loadData={API.getMessages} children={renderMessages} />
+          <DataLoader loadData={API.getMessages}>{renderMessages}</DataLoader>
+          <DataLoader
+            loadData={API.getVideos}
+            children={(state) => <div>{JSON.stringify(state)}</div>}
+          />
+          <DataLoader loadData={API.getVideos}>
+            {(state) => <div>{JSON.stringify(state)}</div>}
+          </DataLoader>
+        </ThemeContext.Provider>
       </UserContext.Provider>
     );
   }
