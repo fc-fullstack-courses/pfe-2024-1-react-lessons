@@ -4,6 +4,7 @@ import * as API from './api';
 import ComponentA from './components/drillingComponents/A';
 import { UserContext, ThemeContext } from './contexts';
 import Header from './components/Header';
+import CONSTANTS from './configs';
 
 class App extends React.Component {
   state = {
@@ -15,7 +16,7 @@ class App extends React.Component {
       email: 'testuser@gmail.com',
       age: 12,
     },
-    theme: 'light',
+    theme: CONSTANTS.THEMES.LIGHT_THEME,
   };
 
   handleLogout = () => {

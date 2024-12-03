@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ThemeContext } from '../../contexts';
 import styles from './Header.module.css';
+import CONSTANTS from '../../configs';
 
 class Header extends Component {
   render() {
@@ -16,26 +17,34 @@ class Header extends Component {
     return (
       <ThemeContext.Consumer>
         {([theme, switchTheme]) => {
-
           let currentThemeClass;
 
-          if(theme === 'dark') {
+          if (theme === CONSTANTS.THEMES.DARK_THEME) {
             currentThemeClass = styles.darkTheme;
-          } else if (theme === 'light') {
+          } else if (theme === CONSTANTS.THEMES.LIGHT_THEME) {
             currentThemeClass = styles.lightTheme;
           }
 
           const className = `${styles.container} ${currentThemeClass}`;
 
-          return <header className={className}>
-            <h1>Мій сайт</h1>
-            <p>Привіт {fullName}</p>
-            {user ? logoutBtn : loginBtn}
-            <button onClick={() => {
-              const newTheme = theme === 'dark' ? 'light' : 'dark';
-              switchTheme(newTheme);
-            }}>Змінити тему на {theme === 'dark' ? 'світлу' : 'темну'}</button>
-          </header>;
+          return (
+            <header className={className}>
+              <h1>Мій сайт</h1>
+              <p>Привіт {fullName}</p>
+              {user ? logoutBtn : loginBtn}
+              <button
+                onClick={() => {
+                  const newTheme =
+                    theme === CONSTANTS.THEMES.DARK_THEME
+                      ? CONSTANTS.THEMES.LIGHT_THEME
+                      : CONSTANTS.THEMES.DARK_THEME;
+                  switchTheme(newTheme);
+                }}
+              >
+                Змінити тему на {theme === 'dark' ? 'світлу' : 'темну'}
+              </button>
+            </header>
+          );
         }}
       </ThemeContext.Consumer>
     );

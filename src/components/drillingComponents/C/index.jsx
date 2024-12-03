@@ -2,6 +2,8 @@ import React from 'react';
 import ComponentD from '../D';
 import { UserContext, ThemeContext } from '../../../contexts';
 import styles from './C.module.css';
+import CONSTANTS from '../../../configs';
+
 
 const ComponentC = (props) => {
   const { forC, ...restOfCProps } = props;
@@ -9,9 +11,9 @@ const ComponentC = (props) => {
   const renderWithThemeContext = ([theme]) => {
     let currentThemeClass;
 
-    if (theme === 'dark') {
+    if (theme === CONSTANTS.THEMES.DARK_THEME) {
       currentThemeClass = styles.darkTheme;
-    } else if (theme === 'light') {
+    } else if (theme === CONSTANTS.THEMES.LIGHT_THEME) {
       currentThemeClass = styles.lightTheme;
     }
 
