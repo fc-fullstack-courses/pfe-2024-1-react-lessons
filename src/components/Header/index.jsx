@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ThemeContext } from '../../contexts';
+import { withTheme } from '../../hocs';
 import styles from './Header.module.css';
 import CONSTANTS from '../../configs';
 
@@ -41,18 +41,12 @@ class Header extends Component {
           Змінити тему на {theme === 'dark' ? 'світлу' : 'темну'}
         </button>
       </header>
-    )
+    );
   }
 }
 
-function HeaderWithTheme(props) {
-  return (
-    <ThemeContext.Consumer>
-      {([theme, switchTheme]) => (
-        <Header theme={theme} switchTheme={switchTheme} />
-      )}
-    </ThemeContext.Consumer>
-  );
-}
+// const HeaderWithTheme = withTheme(Header);
 
-export default HeaderWithTheme;
+// export default HeaderWithTheme;
+
+export default withTheme(Header);
