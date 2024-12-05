@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withTheme } from '../../hocs';
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 import CONSTANTS from '../../configs';
 
 class Header extends Component {

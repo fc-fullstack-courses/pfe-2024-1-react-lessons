@@ -3,12 +3,14 @@
   border-bottom: 2px solid black;
 }
 
+$darkColor: #333333;
+
 .lightTheme {
   background-color: lightblue;
-  color: black;
+  color: $darkColor;
 }
 
 .darkTheme {
   color: white;
-  background-color: #333333;
+  background-color: $darkColor;
 }
