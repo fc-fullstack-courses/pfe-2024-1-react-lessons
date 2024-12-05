@@ -1,16 +1,15 @@
+@use '../../styles/templates';
+// @import '../../styles/templates';
+
 .container {
   padding: 20px;
   border-bottom: 2px solid black;
 }
 
-$darkColor: #333333;
-
 .lightTheme {
-  background-color: lightblue;
-  color: $darkColor;
+  @extend %lightTheme;
 }
 
 .darkTheme {
-  color: white;
-  background-color: $darkColor;
+  @extend %darkTheme;
 }
