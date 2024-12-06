@@ -48,7 +48,7 @@ class App extends React.Component {
     const { user, theme } = this.state;
 
     const renderMessages = (state, load) => {
-      console.log(state);
+      // console.log(state);
 
       const { data: messages, isLoading, error } = state;
 
