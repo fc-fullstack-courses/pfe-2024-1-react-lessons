@@ -5,6 +5,7 @@ import ComponentA from './components/drillingComponents/A';
 import { UserContext, ThemeContext } from './contexts';
 import Header from './components/Header';
 import CONSTANTS from './configs';
+import RegistrationForm from './components/RegistrationForm';
 
 class App extends React.Component {
   state = {
@@ -73,16 +74,7 @@ class App extends React.Component {
       <UserContext.Provider value={user}>
         <ThemeContext.Provider value={[theme, this.switchTheme]}>
           <Header />
-          <ComponentA />
-          <DataLoader loadData={API.getMessages} children={renderMessages} />
-          <DataLoader loadData={API.getMessages}>{renderMessages}</DataLoader>
-          <DataLoader
-            loadData={API.getVideos}
-            children={(state) => <div>{JSON.stringify(state)}</div>}
-          />
-          <DataLoader loadData={API.getVideos}>
-            {(state) => <div>{JSON.stringify(state)}</div>}
-          </DataLoader>
+          <RegistrationForm />
         </ThemeContext.Provider>
       </UserContext.Provider>
     );
