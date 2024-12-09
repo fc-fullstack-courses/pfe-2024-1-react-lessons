@@ -6,6 +6,7 @@ import { UserContext, ThemeContext } from './contexts';
 import Header from './components/Header';
 import CONSTANTS from './configs';
 import RegistrationForm from './components/RegistrationForm';
+import ProductDashoboard from './components/ProductDashboard';
 
 class App extends React.Component {
   state = {
@@ -74,6 +75,7 @@ class App extends React.Component {
       <UserContext.Provider value={user}>
         <ThemeContext.Provider value={[theme, this.switchTheme]}>
           <Header />
+          <ProductDashoboard />
           <RegistrationForm />
         </ThemeContext.Provider>
       </UserContext.Provider>
