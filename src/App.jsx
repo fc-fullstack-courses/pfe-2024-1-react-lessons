@@ -1,15 +1,8 @@
 import React from 'react';
-import DataLoader from './components/DataLoader';
-import * as API from './api';
-import ComponentA from './components/drillingComponents/A';
 import { UserContext, ThemeContext } from './contexts';
 import Header from './components/Header';
 import CONSTANTS from './configs';
-import RegistrationForm from './components/RegistrationForm';
-import ProductDashoboard from './components/ProductDashboard';
-import FormMouseTracker from './components/FormMouseTracker/classVersion';
-import FormMouseTrackerBadHooks from './components/FormMouseTracker/badHookVersion';
-import FormMouseTrackerGoodHooks from './components/FormMouseTracker';
+
 
 class App extends React.Component {
   state = {
@@ -51,38 +44,11 @@ class App extends React.Component {
 
   render() {
     const { user, theme } = this.state;
-
-    const renderMessages = (state, load) => {
-      // console.log(state);
-
-      const { data: messages, isLoading, error } = state;
-
-      return (
-        <div>
-          <button onClick={() => load()}>Load again</button>
-          {isLoading && <div>LOADING ...</div>}
-          {error && <div>ERROR: {error.message}</div>}
-          {messages &&
-            messages.map((message) => (
-              <article key={message.id}>
-                <h2>{message.title}</h2>
-                <h3>By {message.author}</h3>
-                <p>{message.text}</p>
-              </article>
-            ))}
-        </div>
-      );
-    };
-
     return (
       <UserContext.Provider value={user}>
         <ThemeContext.Provider value={[theme, this.switchTheme]}>
           <Header />
-          {/* <ProductDashoboard /> */}
-          <FormMouseTracker />
-          <FormMouseTrackerBadHooks />
-          <FormMouseTrackerGoodHooks />
-          {/* <RegistrationForm /> */}
+
         </ThemeContext.Provider>
       </UserContext.Provider>
     );
