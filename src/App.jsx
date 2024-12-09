@@ -7,6 +7,9 @@ import Header from './components/Header';
 import CONSTANTS from './configs';
 import RegistrationForm from './components/RegistrationForm';
 import ProductDashoboard from './components/ProductDashboard';
+import FormMouseTracker from './components/FormMouseTracker/classVersion';
+import FormMouseTrackerBadHooks from './components/FormMouseTracker/badHookVersion';
+import FormMouseTrackerGoodHooks from './components/FormMouseTracker';
 
 class App extends React.Component {
   state = {
@@ -75,8 +78,11 @@ class App extends React.Component {
       <UserContext.Provider value={user}>
         <ThemeContext.Provider value={[theme, this.switchTheme]}>
           <Header />
-          <ProductDashoboard />
-          <RegistrationForm />
+          {/* <ProductDashoboard /> */}
+          <FormMouseTracker />
+          <FormMouseTrackerBadHooks />
+          <FormMouseTrackerGoodHooks />
+          {/* <RegistrationForm /> */}
         </ThemeContext.Provider>
       </UserContext.Provider>
     );
