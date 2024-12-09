@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+/*
+  Переробити на функціональний за допмогою хуків
+  useState і useEffect
+*/
+
 class MessagesLoader extends Component {
   state = {
     messages: [],
