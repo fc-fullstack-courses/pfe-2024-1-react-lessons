@@ -2,6 +2,7 @@ import React from 'react';
 import { UserContext, ThemeContext } from './contexts';
 import Header from './components/Header';
 import CONSTANTS from './configs';
+import MouseTracker from './components/MouseTracker';
 
 
 class App extends React.Component {
@@ -15,6 +16,7 @@ class App extends React.Component {
       age: 12,
     },
     theme: CONSTANTS.THEMES.LIGHT_THEME,
+    isTrackerShown: true
   };
 
   handleLogout = () => {
@@ -42,13 +44,20 @@ class App extends React.Component {
     });
   };
 
+  toggleTracker = () => {
+    this.setState({
+      isTrackerShown : !this.state.isTrackerShown
+    })
+  }
+ 
   render() {
-    const { user, theme } = this.state;
+    const { user, theme, isTrackerShown } = this.state;
     return (
       <UserContext.Provider value={user}>
         <ThemeContext.Provider value={[theme, this.switchTheme]}>
           <Header />
-
+          <button onClick={this.toggleTracker}>toggle tracker</button>
+          {isTrackerShown && <MouseTracker />}
         </ThemeContext.Provider>
       </UserContext.Provider>
     );
