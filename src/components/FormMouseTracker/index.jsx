@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function FormMouseTracker(props) {
   const [inputText, setInputText] = useState('dont kill me');
@@ -8,16 +8,36 @@ function FormMouseTracker(props) {
     y: 0,
   });
 
+  useEffect(function effect() {
+    console.log('effect callback');
+    document.addEventListener('mousemove', handleChangeCoords);
+
+    return function effectCleanup() {
+      console.log('effectCleanup callback');
+      document.removeEventListener('mousemove', handleChangeCoords);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.title = `Input value: ${inputText}`;
+    console.log('input title change');
+  }, [inputText]);
+
+  useEffect(() => {
+    console.log(`X is: ${x}`);
+    console.log(`Y is: ${y}`);
+  }, [x, y]);
+
   const handleInputChange = ({ target: { value } }) => {
     setInputText(value);
   };
 
-  const handleChangeCoords = ({ clientX, clientY }) => {
+  function handleChangeCoords({ clientX, clientY }) {
     setMouseCoordinates({
       x: clientX,
       y: clientY,
     });
-  };
+  }
 
   return (
     <div
@@ -26,7 +46,6 @@ function FormMouseTracker(props) {
         maxWidth: '500px',
         border: '1px solid black',
       }}
-      onMouseMove={handleChangeCoords}
     >
       <p>Input value is: {inputText}</p>
       <p>X coord value is: {x}</p>

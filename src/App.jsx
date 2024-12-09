@@ -3,6 +3,7 @@ import { UserContext, ThemeContext } from './contexts';
 import Header from './components/Header';
 import CONSTANTS from './configs';
 import MouseTracker from './components/MouseTracker';
+import FormMouseTracker from './components/FormMouseTracker';
 
 
 class App extends React.Component {
@@ -57,7 +58,7 @@ class App extends React.Component {
         <ThemeContext.Provider value={[theme, this.switchTheme]}>
           <Header />
           <button onClick={this.toggleTracker}>toggle tracker</button>
-          {isTrackerShown && <MouseTracker />}
+          {isTrackerShown && <FormMouseTracker />}
         </ThemeContext.Provider>
       </UserContext.Provider>
     );
