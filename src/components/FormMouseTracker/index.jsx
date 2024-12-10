@@ -30,6 +30,12 @@ function FormMouseTracker(props) {
 
   const handleInputChange = ({ target: { value } }) => {
     setInputText(value);
+
+    // setInputText((inputTextValue) => {
+    //   console.log(inputTextValue);
+
+    //   return value;
+    // });
   };
 
   function handleChangeCoords({ clientX, clientY }) {

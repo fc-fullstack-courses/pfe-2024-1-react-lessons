@@ -18,7 +18,8 @@ class App extends React.Component {
       age: 12,
     },
     theme: CONSTANTS.THEMES.LIGHT_THEME,
-    isTrackerShown: true
+    isTrackerShown: true,
+    counter: 0
   };
 
   handleLogout = () => {
@@ -51,13 +52,57 @@ class App extends React.Component {
       isTrackerShown : !this.state.isTrackerShown
     })
   }
- 
+
+  handleClick = () => {
+    // this.setState({
+    //   counter: this.state.counter + 2
+    // });
+
+    // console.log(this.state.counter); // 0
+
+    // this.setState({
+    //   counter: this.state.counter + 1 // 0 + 1 
+    // });
+
+    // коллбек режим setState
+    this.setState((state, props) => {
+      // state та props у колбеці гарантовано з найсвіжішими даними
+
+      console.log(state.counter); // 0
+
+      // повертаємо з колбеку об'єкт стану який треба докинути
+      return {
+        counter: state.counter + 1 // 0 + 1
+      }
+    });
+
+    // console.log(this.state.counter); // 0
+
+    // this.setState({
+    //   counter: this.state.counter + 1 // 0 + 1 
+    // });
+
+    this.setState((state) => {
+      console.log(this.state.counter); 
+      console.log(state.counter); // 1
+
+      return {
+        counter: state.counter + 1 // 1 + 1
+      }
+    });
+
+
+    // console.log(this.state.counter); // 0
+  }
+
   render() {
-    const { user, theme, isTrackerShown } = this.state;
+    const { user, theme, isTrackerShown, counter } = this.state;
     return (
       <UserContext.Provider value={user}>
         <ThemeContext.Provider value={[theme, this.switchTheme]}>
           <Header />
+          <p>Count is: {counter}</p>
+          <button onClick={this.handleClick}>Click me</button>
           <MessagesLoader />
           <button onClick={this.toggleTracker}>toggle tracker</button>
           {isTrackerShown && <FormMouseTracker />}
