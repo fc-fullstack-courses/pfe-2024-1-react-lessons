@@ -1,7 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
+// ERROR
+// useState();
+
+// function sum () {
+//   // error
+//   useState();
+// }
+
 function FormMouseTracker(props) {
+
   const [inputText, setInputText] = useState('dont kill me');
+
+  // if(true) {
+  //   // ERROR
+  //   useEffect(() => {
+  //     console.log('не найвищій рівень')
+  //   })
+  // }
+
+  useEffect(() => {
+    if(true) {
+      console.log('не найвищій рівень')
+    }
+  })
 
   const [{ x, y }, setMouseCoordinates] = useState({
     x: 0,
