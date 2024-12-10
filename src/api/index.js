@@ -43,6 +43,15 @@ export const getVideos = function () {
   return fetch('/videos.json').then((res) => res.json());
 };
 
+export const getRecipes = () => {
+  const recipesPromise = fetch('https://dummyjson.com/recipes')
+    .then((res) => res.json())
+    .then(({ recipes }) => recipes);
+
+  return recipesPromise;
+};
+
+
 // /**
 //  *
 //  * @param {object} queryObj

@@ -1,42 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import { useLoadData } from '../../hooks';
+import { getMessages } from '../../api';
 
 /*
   Переробити на функціональний за допмогою хуків
   useState і useEffect
 */
 
-function MessagesLoader(props) {
-  const [messages, setMessages] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    fetch('/messages.json')
-      .then((res) => res.json())
-      .then((messages) => {
-        setMessages(messages);
-      })
-      .catch((error) => {
-        setError(error);
-      })
-      .finally(() => setIsLoading(false));
-  }, []);
-
-  const messagesElems = messages.map((message) => (
-    <article key={message.id}>
-      <h2>{message.title}</h2>
-      <h3>By {message.author}</h3>
-      <p>{message.text}</p>
-    </article>
-  ));
+function MessagesLoader() {
+  const { data: messages, isLoading, error } = useLoadData(getMessages);
 
   return (
     <div>
       {isLoading && <div>LOADING ...</div>}
       {error && <div>ERROR: {error.message}</div>}
-      {messagesElems}
+      {messages &&
+        messages.map((message) => (
+          <article key={message.id}>
+            <h2>{message.title}</h2>
+            <h3>By {message.author}</h3>
+            <p>{message.text}</p>
+          </article>
+        ))}
     </div>
   );
 }

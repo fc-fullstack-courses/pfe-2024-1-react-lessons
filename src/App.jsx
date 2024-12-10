@@ -102,6 +102,7 @@ class App extends React.Component {
       <UserContext.Provider value={user}>
         <ThemeContext.Provider value={[theme, this.switchTheme]}>
           <RecipeLoader />
+          <MessagesLoader />
         </ThemeContext.Provider>
       </UserContext.Provider>
     );

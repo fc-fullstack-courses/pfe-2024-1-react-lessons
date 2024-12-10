@@ -1,39 +1,65 @@
-import { useEffect, useState } from 'react';
+import { useLoadData } from "../../hooks";
+import { getRecipes } from "../../api";
+
+/*
+  користувацьких хук - функція, назва якої починається з use
+  та яка містить в собі логіку, що має використовуватися декількома
+  різними компонентами. У користувацькому хуку можна використовувати
+  інші хуки і він може приймати та повертати будь-які значення (тут все залежить 
+  від завдання яке хук вирішує)
+*/
+// function useLoadRecipes() {
+//   const [recipes, setRecipes] = useState([]);
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [error, setError] = useState(null);
+
+//   useEffect(() => {
+//     setIsLoading(true);
+
+//     fetch('https://dummyjson.com/recipes')
+//       .then((res) => res.json())
+//       .then(({ recipes }) => {
+//         setRecipes(recipes);
+//       })
+//       .catch((error) => setError(error))
+//       .finally(() => setIsLoading(false));
+//   }, []);
+
+//   return {
+//     recipes,
+//     isLoading,
+//     error,
+//   };
+// }
+
 
 const RecipeLoader = () => {
-  const [recipes, setRecipes] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // запуск користувацького хука
+  const { data: recipes, isLoading, error } = useLoadData(getRecipes);
 
-  useEffect(() => {
-    setIsLoading(true);
-
-    fetch('https://dummyjson.com/recipes')
-      .then((res) => res.json())
-      .then(({ recipes }) => {
-        setRecipes(recipes);
-      })
-      .catch((error) => setError(error))
-      .finally(() => setIsLoading(false));
-  }, []);
-
-  const recipesList = recipes.map((recipe) => (
-    <li key={recipe.id}>
-      <article>
-        <h3>{recipe.name}</h3>
-        <ol>
-          {recipe.instructions.map((step) => <li key={step}>{step}</li>)}
-        </ol>
-      </article>
-    </li>
-  ));
+  // const { recipes, isLoading, error } = useLoadRecipes();
 
   return (
     <article>
       <h2>Our recipes</h2>
       {isLoading && <div>LOADING ...</div>}
       {error && <div>ERROR: {error.message}</div>}
-      {recipesList.length > 0 && <ul>{recipesList}</ul>}
+      {recipes && (
+        <ul>
+          {recipes.map((recipe) => (
+            <li key={recipe.id}>
+              <article>
+                <h3>{recipe.name}</h3>
+                <ol>
+                  {recipe.instructions.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+              </article>
+            </li>
+          ))}
+        </ul>
+      )}
     </article>
   );
 };
