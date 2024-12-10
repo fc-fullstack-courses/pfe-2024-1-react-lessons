@@ -18,7 +18,7 @@ class App extends React.Component {
       age: 12,
     },
     theme: CONSTANTS.THEMES.LIGHT_THEME,
-    isTrackerShown: true,
+    isTrackerShown: false,
     counter: 0
   };
 
