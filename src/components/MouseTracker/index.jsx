@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+/*
+  створити користувацький хук useMouseTracker який буде відстужевати розташування миші
+  на сторінці
+  він має повертати об'єкт з координатами х та у. Ці координати він автоматично оновлює
+  за допомогою обробника mousemove. 
+*/
+
 const MouseTracker = (props) => {
   const [{ x, y }, setMouseCoordinates] = useState({
     x: 0,
