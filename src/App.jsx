@@ -5,6 +5,7 @@ import CONSTANTS from './configs';
 import MouseTracker from './components/MouseTracker';
 import FormMouseTracker from './components/FormMouseTracker';
 import MessagesLoader from './components/MessagesLoader';
+import RecipeLoader from './components/RecipeLoader';
 
 
 class App extends React.Component {
@@ -100,12 +101,7 @@ class App extends React.Component {
     return (
       <UserContext.Provider value={user}>
         <ThemeContext.Provider value={[theme, this.switchTheme]}>
-          <Header />
-          <p>Count is: {counter}</p>
-          <button onClick={this.handleClick}>Click me</button>
-          <MessagesLoader />
-          <button onClick={this.toggleTracker}>toggle tracker</button>
-          {isTrackerShown && <FormMouseTracker />}
+          <RecipeLoader />
         </ThemeContext.Provider>
       </UserContext.Provider>
     );
