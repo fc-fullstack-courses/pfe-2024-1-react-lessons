@@ -4,8 +4,24 @@ import { ThemeContext, UserContext } from '../../contexts';
 import styles from './Header.module.scss';
 import CONSTANTS from '../../configs';
 
-function Header(props) {
-  const { handleLogout, handleLogin } = props;
+function Header({ dispatch }) {
+  const handleLogout = () => {
+    dispatch({ type: 'logoutUser' });
+  };
+
+  const handleLogin = () => {
+    dispatch({
+      type: 'loginUser',
+      user: {
+        id: 0,
+        firstName: 'User',
+        lastName: 'Userenko',
+        isMale: true,
+        email: 'testuser@gmail.com',
+        age: 12,
+      },
+    });
+  };
 
   // useContext приймає об'єкт контексту та повертає значення яке у ньому знаходиться
   const [theme, switchTheme] = useContext(ThemeContext);
@@ -33,7 +49,11 @@ function Header(props) {
             theme === CONSTANTS.THEMES.DARK_THEME
               ? CONSTANTS.THEMES.LIGHT_THEME
               : CONSTANTS.THEMES.DARK_THEME;
-          switchTheme(newTheme);
+
+          dispatch({
+            type: 'changeTheme',
+            theme: newTheme,
+          });
         }}
       >
         Змінити тему на {theme === 'dark' ? 'світлу' : 'темну'}
