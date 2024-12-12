@@ -23,6 +23,22 @@ class App extends React.Component {
     counter: 0
   };
 
+  componentDidMount() {
+    // console.log('componentDidMount');
+
+    // this.intervalId = setInterval(() => {
+    //   console.log('interval');
+    //   console.log(this.state.counter);
+    // }, 1000);
+  }
+  
+  componentWillUnmount() {
+    // console.log('componentWillUnmount');
+    // clearInterval(this.intervalId);
+  }
+  
+
+
   handleLogout = () => {
     this.setState({
       user: null,
