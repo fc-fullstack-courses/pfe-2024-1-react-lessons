@@ -22,3 +22,24 @@ export function useLoadData(loadData) {
     error,
   };
 }
+
+export function useMouseTracker () {
+  const [coords, setCoords] = useState({ x: 0, y: 0});
+
+  function handleMouseMove({ clientX, clientY}) {
+    setCoords({
+      x: clientX,
+      y: clientY
+    });
+  }
+
+  useEffect(() => {
+    document.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, []);
+
+  return coords;
+}

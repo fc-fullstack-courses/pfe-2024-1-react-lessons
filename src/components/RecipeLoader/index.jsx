@@ -1,5 +1,5 @@
-import { useLoadData } from "../../hooks";
-import { getRecipes } from "../../api";
+import { useLoadData, useMouseTracker } from '../../hooks';
+import { getRecipes } from '../../api';
 
 /*
   користувацьких хук - функція, назва якої починається з use
@@ -32,16 +32,18 @@ import { getRecipes } from "../../api";
 //   };
 // }
 
-
 const RecipeLoader = () => {
   // запуск користувацького хука
   const { data: recipes, isLoading, error } = useLoadData(getRecipes);
+  const { x, y } = useMouseTracker();
 
   // const { recipes, isLoading, error } = useLoadRecipes();
 
   return (
     <article>
       <h2>Our recipes</h2>
+      <p>x: {x}</p>
+      <p>y: {y}</p>
       {isLoading && <div>LOADING ...</div>}
       {error && <div>ERROR: {error.message}</div>}
       {recipes && (
