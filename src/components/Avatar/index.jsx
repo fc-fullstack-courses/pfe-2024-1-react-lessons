@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 const Avatar = (props) => {
   const { alt } = props;
@@ -13,5 +13,10 @@ const Avatar = (props) => {
     />
   );
 };
+
+Avatar.propTypes = {
+  alt: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired
+}
 
 export default Avatar;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 /*
   створити користувацький хук useMouseTracker який буде відстужевати розташування миші
@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
   за допомогою обробника mousemove. 
 */
 
-const MouseTracker = (props) => {
+const MouseTracker = () => {
   const [{ x, y }, setMouseCoordinates] = useState({
     x: 0,
     y: 0,

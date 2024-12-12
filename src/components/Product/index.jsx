@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Product.module.css';
 
 class Product extends React.Component {
@@ -41,7 +42,6 @@ class Product extends React.Component {
     const {
       product: { id, name, price, description, isFavorite },
       handleSwitchOrder,
-      toggleFavoriteProduct
     } = this.props;
 
     return (
@@ -59,6 +59,20 @@ class Product extends React.Component {
       </article>
     );
   }
+}
+
+export const productObject = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  isFavorite: PropTypes.bool,
+});
+
+Product.propTypes = {
+  handleSwitchOrder: PropTypes.func,
+  toggleFavoriteProduct: PropTypes.func,
+  product: productObject
 }
 
 export default Product;

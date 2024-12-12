@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import Product from '../Product';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import Product, { productObject } from '../Product';
 
 function ProductList ({ products, toggleFavoriteProduct }) {
   // хук стану
@@ -36,6 +37,13 @@ function ProductList ({ products, toggleFavoriteProduct }) {
       {isReverseOrder ? productsComponents.reverse() : productsComponents}
     </article>
   );
+}
+
+
+
+ProductList.propTypes =  {
+  toggleFavoriteProduct: PropTypes.func,
+  products: PropTypes.arrayOf(productObject)
 }
 
 export default ProductList;

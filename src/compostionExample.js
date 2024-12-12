@@ -24,3 +24,5 @@ class Engine {
 const engine1 = new Engine(300, 1.5);
 
 const car1 = new Car('Toyota', 'Camry', engine1);
+
+car1.brand;

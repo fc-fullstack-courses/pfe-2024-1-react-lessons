@@ -1,4 +1,3 @@
-import React from 'react';
 import ComponentD from '../D';
 import { withTheme, withUser } from '../../../hocs';
 import styles from './C.module.css';

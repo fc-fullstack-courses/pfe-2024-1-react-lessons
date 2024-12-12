@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { getUsers } from '../../api';
 
 class UsersLoader extends Component {

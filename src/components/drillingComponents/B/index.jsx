@@ -1,4 +1,3 @@
-import React from 'react';
 import ComponentC from '../C';
 
 const ComponentB = (props) => {

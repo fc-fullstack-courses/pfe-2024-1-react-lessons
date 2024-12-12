@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-function FormMouseTracker(props) {
+function FormMouseTracker() {
 
   // комібнований стан у хуку useState має прроблеми
   const [state, setState] = useState({

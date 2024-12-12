@@ -1,4 +1,3 @@
-import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { REGISTRATION_SCHEMA } from '../../validation';
 import styles from './RegistrationForm.module.css';
@@ -13,7 +12,7 @@ const initialState = {
   gender: 'male',
 };
 
-function RegistrationForm(props) {
+function RegistrationForm() {
   const handleSubmit = (values, formikBag) => {
     console.log(values);
     console.log(formikBag);

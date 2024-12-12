@@ -1,5 +1,4 @@
 import React from 'react';
-import { REGISTRATION_SCHEMA } from '../../validation';
 // styles - об'єкт ключі якого назви ваших селекторів у css
 // a значення - згенеровані назви для стилів
 import styles from './RegistrationForm.module.css';

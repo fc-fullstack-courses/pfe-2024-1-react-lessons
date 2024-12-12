@@ -1,12 +1,9 @@
 import React from 'react';
 import { UserContext, ThemeContext } from './contexts';
-import Header from './components/Header';
 import CONSTANTS from './configs';
-import MouseTracker from './components/MouseTracker';
-import FormMouseTracker from './components/FormMouseTracker';
-import MessagesLoader from './components/MessagesLoader';
-import RecipeLoader from './components/RecipeLoader';
 
+import Avatar from './components/Avatar';
+import ProductDashoboard from './components/ProductDashboard';
 
 class App extends React.Component {
   state = {
@@ -85,6 +82,8 @@ class App extends React.Component {
     this.setState((state, props) => {
       // state та props у колбеці гарантовано з найсвіжішими даними
 
+      console.log(props);
+
       console.log(state.counter); // 0
 
       // повертаємо з колбеку об'єкт стану який треба докинути
@@ -113,12 +112,12 @@ class App extends React.Component {
   }
 
   render() {
-    const { user, theme, isTrackerShown, counter } = this.state;
+    const { user, theme } = this.state;
     return (
       <UserContext.Provider value={user}>
         <ThemeContext.Provider value={[theme, this.switchTheme]}>
-          <RecipeLoader />
-          <MessagesLoader />
+          <Avatar src='test' alt='test'/>
+          <ProductDashoboard />
         </ThemeContext.Provider>
       </UserContext.Provider>
     );
