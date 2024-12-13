@@ -30,7 +30,7 @@ function Header({ dispatch }) {
   const [theme, switchTheme] = useContext(ThemeContext);
   const user = useContext(UserContext);
 
-  const { x, y } = useMouseTracker(containerRef);
+  // const { x, y } = useMouseTracker(containerRef);
 
   const handleLogout = () => {
     dispatch({ type: 'logoutUser' });
@@ -83,8 +83,8 @@ function Header({ dispatch }) {
       </button>
       {/* прив'язка рефа до елемента */}
       <input ref={inputRef} />
-      <p>X: {x}</p>
-      <p>Y: {y}</p>
+      {/* <p>X: {x}</p>
+      <p>Y: {y}</p> */}
     </header>
   );
 }
