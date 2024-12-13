@@ -1,65 +1,36 @@
-import { useReducer } from 'react';
-import { UserContext, ThemeContext } from './contexts';
-import Avatar from './components/Avatar';
-import Header from './components/Header';
-import MouseTracker from './components/MouseTracker';
-import { initialState, reducer } from './reducer';
+import { Routes, Route, Link } from 'react-router';
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  return <>
+    <ul>
+      <li>
+        <Link to='/'>Home page</Link>
+      </li>
+      <li>
+        <Link to='/about'>About page</Link>
+      </li>
+      <li>
+        <Link to='/contacts'>Contacts page</Link>
+      </li>
+    </ul>
+    <Routes>
+      <Route path='/' element={<HomePage user={'Test User'}/>}/>
+      <Route path='about' element={<AboutPage />}/>
+      <Route path='contacts' element={<ContactsPage />}/>
+    </Routes>
+  </>;
+}
 
-  const toggleTracker = () => {
-    dispatch({ type: 'toggleTracker' });
-  };
+function HomePage ({user}) {
+  return <div>Home Page. Hello {user}</div>
+}
 
-  const changeEmail = ({ target: { value } }) => {
-    const action = {
-      type: 'changeEmail',
-      email: value,
-    };
+function AboutPage () {
+  return <div>About Page</div>
+}
 
-    dispatch(action);
-  };
-
-  const changeComment = ({ target: { value } }) => {
-    const action = {
-      type: 'changeComment',
-      comment: value,
-    };
-
-    dispatch(action);
-  };
-
-  const submitForm = (e) => {
-    e.preventDefault();
-
-    alert(`ми з вами зв'яжемося.`);
-  };
-
-  return (
-    <UserContext.Provider value={state.user}>
-      <ThemeContext.Provider value={[state.theme, dispatch]}>
-        <Header dispatch={dispatch} />
-        <Avatar src='test' alt='test' />
-        <button onClick={toggleTracker}>toggle tracker</button>
-        {state.isTrackerShown && <MouseTracker />}
-        <form onSubmit={submitForm}>
-          <input
-            type='email'
-            name='email'
-            value={state.email}
-            onChange={changeEmail}
-          />
-          <textarea
-            name='comment'
-            value={state.comment}
-            onChange={changeComment}
-          />
-          <button>Send comment</button>
-        </form>
-      </ThemeContext.Provider>
-    </UserContext.Provider>
-  );
+function ContactsPage () {
+  return <div>Contacts Page</div>
 }
 
 export default App;
