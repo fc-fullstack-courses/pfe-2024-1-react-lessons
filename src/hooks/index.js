@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export function useLoadData(loadData) {
   const [data, setData] = useState(null);
@@ -23,23 +23,25 @@ export function useLoadData(loadData) {
   };
 }
 
-export function useMouseTracker () {
-  const [coords, setCoords] = useState({ x: 0, y: 0});
+export function useMouseTracker(elemRef) {
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
 
-  function handleMouseMove({ clientX, clientY}) {
+  function handleMouseMove({ clientX, clientY }) {
     setCoords({
       x: clientX,
-      y: clientY
+      y: clientY,
     });
   }
 
   useEffect(() => {
-    document.addEventListener('mousemove', handleMouseMove);
+    const elem = elemRef.current ? elemRef.current : document;
+
+    elem.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, []);
+      elem.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [elemRef]);
 
   return coords;
 }
