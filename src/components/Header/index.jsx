@@ -1,9 +1,9 @@
 import { useContext, useEffect, useRef } from 'react';
+import { Link } from 'react-router';
 import cx from 'classnames';
 import { ThemeContext, UserContext } from '../../contexts';
 import styles from './Header.module.scss';
 import CONSTANTS from '../../configs';
-import { useMouseTracker } from '../../hooks';
 
 function Header({ dispatch }) {
   const inputRef = useRef(null);
@@ -85,6 +85,17 @@ function Header({ dispatch }) {
       <input ref={inputRef} />
       {/* <p>X: {x}</p>
       <p>Y: {y}</p> */}
+          <ul>
+      <li>
+        <Link to='/'>Home page</Link>
+      </li>
+      <li>
+        <Link to='/about'>About page</Link>
+      </li>
+      <li>
+        <Link to='/contacts'>Contacts page</Link>
+      </li>
+    </ul>
     </header>
   );
 }
