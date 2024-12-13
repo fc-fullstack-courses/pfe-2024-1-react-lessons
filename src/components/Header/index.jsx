@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import cx from 'classnames';
 import { ThemeContext, UserContext } from '../../contexts';
 import styles from './Header.module.scss';
@@ -22,6 +22,23 @@ function Header({ dispatch }) {
       },
     });
   };
+
+  const inputRef = useRef(null);
+  const numberRef = useRef(0);
+
+  useEffect(() => {
+    console.log('inputRef');
+    console.log(inputRef);
+    console.log(inputRef.current); // значення рефа
+  }, [inputRef]);
+
+  useEffect(() => {
+    numberRef.current = 10; // мутація рефа - вважається побічним ефектом. не призводить до повторонго рендера
+    // можна робити якщо вам треба
+    // this.state.number = 5; // мутація стану - Помилка
+  });
+
+  console.log(numberRef.current);
 
   // useContext приймає об'єкт контексту та повертає значення яке у ньому знаходиться
   const [theme, switchTheme] = useContext(ThemeContext);
@@ -58,6 +75,8 @@ function Header({ dispatch }) {
       >
         Змінити тему на {theme === 'dark' ? 'світлу' : 'темну'}
       </button>
+      {/* прив'язка рефа до елемента */}
+      <input ref={inputRef} />
     </header>
   );
 }
