@@ -2,17 +2,17 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router';
 
 function Header({ dispatch }) {
-  const inputRef = useRef(null);
+  // const inputRef = useRef(null);
   const containerRef = useRef(null);
   const rendersRef = useRef(1);
 
-  useEffect(() => {
-    console.log('inputRef');
-    console.log(inputRef);
-    console.log(inputRef.current); // значення рефа
+  // useEffect(() => {
+  //   console.log('inputRef');
+  //   console.log(inputRef);
+  //   console.log(inputRef.current); // значення рефа
 
-    inputRef.current.focus();
-  }, [inputRef]);
+  //   inputRef.current.focus();
+  // }, [inputRef]);
 
   useEffect(() => {
     rendersRef.current += 1; // мутація рефа - вважається побічним ефектом. не призводить до повторонго рендера
@@ -26,7 +26,7 @@ function Header({ dispatch }) {
     <header ref={containerRef}>
       <h1>Мій сайт</h1>
       {/* прив'язка рефа до елемента */}
-      <input ref={inputRef} />
+      {/* <input ref={inputRef} /> */}
 
       <ul>
         <li>
