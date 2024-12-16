@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router';
+import { Routes, Route, useLocation } from 'react-router';
 import { Layout } from './pages/Layouts/Layout';
 import { AuthLayout } from './pages/Layouts/AuthLayout';
 import { HomePage } from './pages/Home';
@@ -8,8 +8,15 @@ import { LoginPage } from './pages/LoginPage';
 import { RegistrationPage } from './pages/RegistrationPage';
 import ProfilePage from './pages/ProfilePage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { useEffect } from 'react';
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location);
+  }, [location]);
+
   return (
     <>
       {/* <Header /> */}
